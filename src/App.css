@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+.Container {
+
+}
+/* 
+.brain-coral{
+  width:128px;
+  height:128px;
+  background: url('./images/brain-coral-1.png');
+ 
+} */
+.diver {
+  width: 6912/27px;
+  height: 128px;
+  margin: 2% auto;
+  background: url('./images/diver.png') left center ;
+  animation: play 2s steps(27) infinite;
+  animation-direction: alternate;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes play {
+    100% { background-position: -6912px; }
+}
+.Content {
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Menu {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  z-index: 10;
+  text-align: right;
+  transform-origin: bottom right;
+  transform: rotate(-90deg) translateX(28px)
+}
+.Menu nav {
+  margin-top: 10px;
+  font-size: 18px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Menu nav a {
+  margin-left: 20px;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .5s
 }
 
-.App-link {
-  color: #61dafb;
+.Menu nav a.selected,.Menu nav a:hover {
+  opacity: 1
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Menu nav a:first-child {
+  margin-left: 0
+}
+
+
+menu,ol,ul {
+  list-style: none
+}
+
+a {
+  color: inherit
+}
+h1 {
+  font-weight: 800;
+}
+h2 {
+  font-weight: 500;
 }
