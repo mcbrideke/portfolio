@@ -6,6 +6,7 @@ import About from "./pages/About"
 //import { useSpring } from 'react-spring'
 import NavBar from "./components/NavBar"
 import "./App.css"
+//import "./index.css"
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
 
@@ -51,7 +52,9 @@ function App() {
   const transform = scrollDirection === "down" ? "rotate(180deg) scaleY(-1)" : "rotate(0deg)"
 
   return (
-    <div style={{backgroundColor:"green"}}>
+
+    
+    <div >
       <div className="Menu">
         <NavBar>
             <div className="tang"></div>
@@ -69,9 +72,10 @@ function App() {
           <About refProp={aboutRef} />
         </div>
       </div>
-      <div style={{backgroundColor:"green"}}></div>
     </div>
+  
   )
+  
 }
 
 export default App

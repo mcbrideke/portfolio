@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
 
-body {
-  color: #bdd57c;
-  background: linear-gradient(#289ecc, #263145);
-  font-family: 'Montserrat', sans-serif;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -18,4 +12,33 @@ code {
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
+body {
+  color: whitesmoke;
+  background: linear-gradient(#289ecc, #263145);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* include border and padding in element width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* full-sized  container that fills up the page
+div {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  background-color: blue;
+} */
