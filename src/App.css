@@ -1,13 +1,145 @@
-.Container {
-  background-color: aquamarine;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&family=Rubik+Mono+One&display=swap');
+
+.enthuse-img {
+  width:400px;
+  opacity: 0.9;
+  float: left;
+  alt:"enthuse";
+  border: solid 5px;
+  margin: 20px;
+  box-shadow: 10px 15px;
+  transition: transform 0.2s;
 }
-/* 
-.brain-coral{
-  width:128px;
-  height:128px;
-  background: url('./images/brain-coral-1.png');
- 
-} */
+.enthuse-img:hover {
+  transform: translate(-15px, -15px);
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr 1fr;
+  grid-template-areas: "title title . . ." "about-items about-items content content content" "about-items about-items content content content";
+  margin-right: 25%;
+  margin-left: 15%;
+  min-height: 800px;
+  max-height: 1600px;
+  margin-top:8%;
+  margin-bottom: 8%;
+  
+}
+
+.title { 
+  grid-area: title; 
+  font-size: xx-large;
+  background-color: #32A29C;
+  color: #C4F4D5;
+  padding-left: 10%;
+  border-radius: 10px 10px 0 0; 
+  height: 100%;
+}
+
+.about-items { 
+  grid-area: about-items;
+  padding-left: 5%;
+  padding-top: 15px;
+  background-color: #32A29C;
+  color: #C4F4D5;
+  background-image:url('./images/corals.png');
+  background-repeat:no-repeat;
+  background-position:right bottom;
+}
+
+.content { 
+  grid-area: content;
+  width: 900px;
+  padding-left: 30px;
+  padding-right: 25px;
+  color: #32A29C;
+  background-color: #C4F4D5;
+  box-shadow: 10px 15px;
+}
+.about-nav {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: x-large;
+  text-decoration: none;
+}
+
+#header {
+  display:flex;
+  height: 100%;
+  background-color: #97EBDB;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  height: 100vh;
+  min-height: 900px;
+  max-height: 1200px;
+  margin-top: 0;
+
+}
+.sun {
+  background-image: url('./images/sun.gif');
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position: center;
+  height:500px;
+  width:500px;
+}
+
+.bubbles {
+
+  width: 160px;
+  height: 160px;
+
+  background: url('./images/bubbles.png') left center ;
+  animation: play-bubbles 1.5s steps(15);
+  animation-direction: normal;
+}
+
+@keyframes play-bubbles {
+  100% { background-position: -2400px; }
+}
+
+#home {
+  background-color: rgb(0,194,199);
+  height: 100%;
+  border-top: 0;
+  padding-bottom: 10%;
+  display:flex;
+}  
+
+#projects {
+  border-style: solid;
+  border-width: 32px 0px 0px 0px;
+  border-image: url('./images/border1.png') 50 0 fill repeat;
+  background-color: rgb(0,134,173);
+  height: 100%;
+  margin-top: -10rem;
+  display:flex;
+  padding-bottom: 10%;
+
+}
+#contact {
+  border-style: solid;
+  border-width: 32px 0px 0px 0px;
+  border-image: url('./images/border2.png') 50 0 fill repeat;
+  background-color: #005582;
+  height: 100%;
+  margin-top: -10rem;
+  padding-bottom: 10%;
+  display:flex;
+}
+#footer {
+  border-style: solid;
+  border-width: 32px 0px 0px 0px;
+  border-image: url('./images/border3.png') 50 0 fill repeat;
+  background-color: rgb(33,41,62);
+  height: 100%;
+  display:flex;
+}
+
 .diver {
   width: 6912/27px;
   height: 128px;
@@ -20,9 +152,6 @@
 @keyframes play {
     100% { background-position: -6912px; }
 }
-.Content {
-
-}
 
 .Menu {
   position: fixed;
@@ -34,38 +163,89 @@
   transform: rotate(-90deg) translateX(28px)
 }
 .Menu nav {
-  margin-top: 10px;
-  font-size: 18px
+  margin-top: 0px;
+  font-size: 24px
 }
 
 .Menu nav a {
-  margin-left: 20px;
+  margin-left: 10px;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
-  opacity: .5;
+  opacity: 1;
   transition: opacity .5s
 }
 
 .Menu nav a.selected,.Menu nav a:hover {
-  opacity: 1
+  opacity: 0.5
 }
 
 .Menu nav a:first-child {
   margin-left: 0
 }
 
-
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  line-height: 38px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 menu,ol,ul {
-  list-style: none
+  list-style: none;
+  margin: 0; 
+  padding: 0;
+}
+
+li.icon {
+  background-image:url('./images/yf-tuna-sm.png');
+  background-repeat:no-repeat;
+  background-position:-3px 0px;
+  padding-left:128px;
+  padding-bottom: 40px;
+  padding-top:20px;  
+}
+li.icon2 {
+  background-image:url('./images/sea-turtle-sm.png');
+  background-repeat:no-repeat;
+  background-position:10px -10px;
+  padding-left:128px;
+  padding-bottom: 40px;
+  padding-top:20px;  
+}
+li.icon3 {
+  background-image:url('./images/anglerfish-sm.png');
+  background-repeat:no-repeat;
+  background-position:35px -10px;
+  padding-left:128px;
+  padding-bottom: 40px;
+  padding-top:20px;  
 }
 
 a {
   color: inherit
 }
 h1 {
-  font-weight: 800;
+  font-family: 'Rubik Mono One', sans-serif;
+  display: block;
 }
-h2 {
-  font-weight: 500;
+h2, h3,p,a {
+  font-family: 'Open Sans', sans-serif;
+}
+button {
+  background-color:transparent;
+	display:inline-block;
+  cursor:pointer;
+  text-decoration:none;
+  border:none;
+}
+
+.simple-trans-main > div {
+  position: absolute;
+  width: 800px;
+  height:100%;
+  display: flex;
 }
