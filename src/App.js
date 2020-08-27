@@ -2,29 +2,17 @@ import React, { useRef, useEffect, useState } from "react"
 import Home from "./pages/Home"
 import Projects from "./pages/Projects"
 import Contact from "./pages/Contact"
-import { useSpring, useTrail, animated } from 'react-spring'
 import NavBar from "./components/NavBar"
 import "./App.css"
-//import "./index.css"
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)
-const items = ['Hello,', 'my name is Kevin,', "I'm a web developer."]
-const config = { mass: 5, tension: 2000, friction: 200 }
 
 function App() {
   const [isScrolling, setIsScrolling] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [scrollDirection, setScrollDirection] = useState("down")
-  const [toggle, set] = useState(true)
   const [coords, setCoords] = useState({ x: 0, y: 0 })
   const [isActive, setIsActive] = useState(false)
-  const trail = useTrail(items.length, {
-    config,
-    opacity: toggle ? 1 : 0,
-    x: toggle ? 0 : 20,
-    height: toggle ? 40 : 0,
-    from: { opacity: 0, x: 20, height: 0 },
-  })
 
   useEffect(() => {
    window.addEventListener('scroll', handleScroll)
@@ -56,6 +44,7 @@ function App() {
       setIsScrolling(false)
     }, 66);
   }
+
   const prevRef= useRef();
    useEffect(() => {
      prevRef.current = scrollPosition;
@@ -90,19 +79,13 @@ function App() {
         </NavBar>
         <div className="diver" style={{animationPlayState:playState, transform:transform}}></div>
       </div>
-      <div>
         <section id="header">
-          <div className="sun"></div>
-          <div className="trails-main" onClick={() => set(state => !state)}>
-            <div>
-              {trail.map(({ x, height, ...rest }, index) => (
-                <animated.div
-                  key={items[index]}
-                  className="trails-text"
-                  style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}>
-                  <animated.h1 style={{ height }}>{items[index]}</animated.h1>
-                </animated.div>
-              ))}
+          <div className="header-grid-container">
+            <div className="sun"></div>
+            <div className="header-title">
+              <h1>Hello,</h1>
+              <h1>My name is Kevin,</h1>
+              <h1>I'm a web developer</h1>
             </div>
           </div>
         </section>
@@ -112,7 +95,6 @@ function App() {
           <section id="footer">
                 <p style={{color:"green"}}> Thanks for visiting my website!</p>
           </section>
-      </div>
     </div>
   )
   

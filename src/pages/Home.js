@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useTransition, animated } from 'react-spring'
 
 const pages = [
-    ({ style }) => <animated.div style={{ ...style }} >
         <p>
             I went into college looking for a major that would give me
             the opportunity to design and build. My first choice, computer engineering
@@ -19,9 +18,7 @@ const pages = [
             an ability to package information I think is important,
             into an application that everyone can use,
             and take it and spread it to the whole world in an instant.
-        </p>
-    </animated.div>,
-    ({ style }) => <animated.div style={{ ...style}}>
+        </p>,
         <p>
             Currently I am looking for a job where I can apply my skills and
             find a good balance of creativity and effeciency. Right now I have career-ready proficiency
@@ -31,10 +28,7 @@ const pages = [
             <br />
             Outside of my professional life I like to fish and dive; play basketball, video games, and board games with my friends;
             and work on those fun, little side projects that first enticed me towards programming.
-        </p>
-    </animated.div>,
-    ({ style }) => <animated.div style={{ ...style}}>
-        
+        </p>,
         <p>
             <a href="https://drive.google.com/file/d/1fcbYv1gSH-veQcI00zRkaMzRo9eyObXH/view?usp=sharing" target="_blank">Resume</a><br />
             <br />
@@ -47,27 +41,12 @@ const pages = [
             Git, Trello, Illustrator, <br />
             <br />Affinity Designer, Unity, Aesprite, Figma
         </p>
-    </animated.div>,
 ]
-
-const config = { mass: 5, tension: 1000, friction: 200 }
 
 function Home({ refProp }) {
     const [index, set] = useState(0)
-    const transitions = useTransition(index, p => p, {
-        config,
-        from: { opacity: 0},
-        enter: { opacity: 1},
-        leave: { opacity: 0},
-    })
-    const activeStyle = {
-        opacity:1
-    }
-
-    const inactiveStyle = {
-        opacity: 0.6
-    }
-
+    const activeStyle = {opacity:1}
+    const inactiveStyle = {opacity:0.6}
     function showParagraph(i) {
        set(i);
     }
@@ -113,12 +92,7 @@ function Home({ refProp }) {
                     </ul>
                 </div>
                 <div className="content">
-                    <div className="simple-trans-main" >
-                        {transitions.map(({ item, props, key }) => {
-                            const Page = pages[item]
-                            return <Page key={key} style={props} />
-                        })}
-                    </div> 
+                   {pages[index]}
                 </div>
             </div>
         </section>

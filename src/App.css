@@ -1,5 +1,17 @@
 
+/* 
+
+ Imports
+  
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&family=Rubik+Mono+One&display=swap');
+
+/* 
+
+  Project Images
+  
+*/
 
 .enthuse-img {
   width:400px;
@@ -15,6 +27,11 @@
   transform: translate(-15px, -15px);
 }
 
+/* 
+
+  Pages Content
+  
+*/
 
 .grid-container {
   display: grid;
@@ -22,14 +39,11 @@
   grid-template-rows: 0.5fr 1.5fr 1fr;
   grid-template-areas: "title title . . ." "about-items about-items content content content" "about-items about-items content content content";
   margin-right: 25%;
-  margin-left: 15%;
-  min-height: 800px;
-  max-height: 1600px;
-  margin-top:8%;
-  margin-bottom: 8%;
-  
+  margin-left: 10%;
+  min-height:1000px;
+  margin-top:5%;
+  margin-bottom: 5%;
 }
-
 .title { 
   grid-area: title; 
   font-size: xx-large;
@@ -53,7 +67,7 @@
 
 .content { 
   grid-area: content;
-  width: 900px;
+  min-width: 800px;
   padding-left: 30px;
   padding-right: 25px;
   color: #32A29C;
@@ -66,20 +80,23 @@
   text-decoration: none;
 }
 
-#header {
-  display:flex;
-  height: 100%;
-  background-color: #97EBDB;
-  align-items: center;
-  justify-content: center;
-  font-size: xx-large;
-  height: 100vh;
-  min-height: 900px;
-  max-height: 1200px;
-  margin-top: 0;
+/* 
 
+  Header Content
+
+*/
+
+.header-grid-container {
+  height:100%;
+  width:100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . . ." ". sun sun header-title header-title" ". sun sun header-title header-title" ". . . . .";
 }
+.header-title { grid-area: header-title; }
 .sun {
+  grid-area: sun;
   background-image: url('./images/sun.gif');
   background-repeat:no-repeat;
   background-size:contain;
@@ -88,11 +105,14 @@
   width:500px;
 }
 
-.bubbles {
+/* 
 
+  Bubble Effect On Click
+
+*/
+.bubbles {
   width: 160px;
   height: 160px;
-
   background: url('./images/bubbles.png') left center ;
   animation: play-bubbles 1.5s steps(15);
   animation-direction: normal;
@@ -100,6 +120,19 @@
 
 @keyframes play-bubbles {
   100% { background-position: -2400px; }
+}
+
+/* 
+
+  Page Sections
+
+*/
+#header {
+  background-color: #97EBDB;
+  font-size: xx-large;
+  height:100vh;
+  width:100%;
+  margin-top: 0;
 }
 
 #home {
@@ -140,8 +173,15 @@
   display:flex;
 }
 
+/* 
+
+  Menu Stuff
+
+*/
+
+
 .diver {
-  width: 6912/27px;
+  width: 256px;
   height: 128px;
   margin: 2% auto;
   background: url('./images/diver.png') left center ;
@@ -155,13 +195,14 @@
 
 .Menu {
   position: fixed;
-  right: 30px;
-  top: 20px;
-  z-index: 10;
+  right:0;
+  top:-128px;
+  z-index: 0;
   text-align: right;
   transform-origin: bottom right;
   transform: rotate(-90deg) translateX(28px)
 }
+
 .Menu nav {
   margin-top: 0px;
   font-size: 24px
@@ -184,16 +225,12 @@
   margin-left: 0
 }
 
-p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  line-height: 38px;
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-}
+/*
+
+  General Styles
+
+*/
+
 menu,ol,ul {
   list-style: none;
   margin: 0; 
@@ -219,12 +256,11 @@ li.icon2 {
 li.icon3 {
   background-image:url('./images/anglerfish-sm.png');
   background-repeat:no-repeat;
-  background-position:35px -10px;
+  background-position:25px -10px;
   padding-left:128px;
   padding-bottom: 40px;
   padding-top:20px;  
 }
-
 a {
   color: inherit
 }
@@ -242,10 +278,17 @@ button {
   text-decoration:none;
   border:none;
 }
-
-.simple-trans-main > div {
-  position: absolute;
-  width: 800px;
-  height:100%;
-  display: flex;
+p {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 38px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+@media screen and (min-width: 1500px) {
+  p {
+    font-size: 20px;
+  }
 }
