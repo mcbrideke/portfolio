@@ -445,13 +445,33 @@ li.icon2 {
   padding-top:20px;  
   background-color: #F49364;
 }
-li.icon3 {
+.footer-content {
+  width: 100%;
+  height:130px;
+  align-content: center;
+}
+
+.lights-out-text {
+  display: inline-block;
+  color:#83BF5F;
+  font-size: large;
+}
+.angler-fish-dark {
+  background-image:url('./images/anglerfish-light.png');
+  background-repeat:no-repeat;
+  background-position:10px 10px;
+  padding-left:128px;
+  padding-bottom: 60px;
+  padding-top:40px;  
+ 
+}
+.angler-fish {
   background-image:url('./images/anglerfish-sm.png');
   background-repeat:no-repeat;
-  background-position:25px -10px;
+  background-position:10px 10px;
   padding-left:128px;
-  padding-bottom: 40px;
-  padding-top:20px;  
+  padding-bottom: 60px;
+  padding-top:40px;  
 }
 a {
   color: inherit
@@ -469,6 +489,7 @@ button {
   cursor:pointer;
   text-decoration:none;
   border:none;
+  outline:none;
 }
 p {
   font-family: 'Open Sans', sans-serif;
@@ -499,7 +520,6 @@ p {
   background-color:#F73708;
   color: white;
   font-size: small;
-
   border-radius: 10%;
 }
 

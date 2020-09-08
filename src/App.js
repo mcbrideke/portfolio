@@ -3,8 +3,12 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import './App.css';
+import { useSpring, useTrail, animated } from 'react-spring'
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const items = ['Hello,', 'my name is Kevin,', "I'm a web developer."]	
+const config = { mass: 5, tension: 2000, friction: 200 }
+
 
 function App() {
   const [isScrolling, setIsScrolling] = useState(false);
@@ -12,6 +16,16 @@ function App() {
   const [scrollDirection, setScrollDirection] = useState('down');
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isActive, setIsActive] = useState(false);
+  const [toggle, set] = useState(true);
+  const [lights, setLights] = useState(false);
+  
+  const trail = useTrail(items.length, {	
+    config,	
+    opacity: toggle ? 1 : 0,	
+    x: toggle ? 0 : 20,	
+    height: toggle ? 40 : 0,	
+    from: { opacity: 0, x: 20, height: 0 },	
+  })
 
   useEffect(() => {
    window.addEventListener('scroll', handleScroll);
@@ -72,8 +86,7 @@ function App() {
   const transform = scrollDirection === 'down' ? 'rotate(180deg) scaleY(-1)' : 'rotate(0deg)';
   const showNav = scrollPosition > 600 ? '' :'none';
   const bubblesAnimation = isActive ? '' : 'none';
-  // console.log(bubblesAnimation)
-  // console.log(isActive)
+
   return (
     <div>
       {isActive && <div className='bubbles' style = {{position:'absolute', animation:{bubblesAnimation}, top:coords.y-150 + 'px', left:coords.x-96 + 'px'}}></div>}
@@ -89,17 +102,32 @@ function App() {
         <div className='header-grid-container'>
           <div className='sun'></div>
           <div className='header-title'>
-            <h1>Hello,</h1>
-            <h1>My name is Kevin,</h1>
-            <h1>I'm a web developer.</h1>
+            <div className="trails-main" onClick={() => set(state => !state)}>	            
+              {trail.map(({ x, height, ...rest }, index) => (	   
+                <animated.div	              
+                  key={items[index]}	              
+                  className="trails-text"	
+                  style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}>	
+                  <animated.h1 style={{ height }}>{items[index]}</animated.h1>	
+                </animated.div>	
+              ))}
           </div>
+        </div>
         </div>
       </section>
       <Home refProp={homeRef} />
       <Projects refProp={projectsRef} />
       <Contact refProp={contactRef} />
       <section id='footer'>
-            <p style={{color:'green'}}> Thanks for visiting my website!</p>
+        <div className='footer-content'>
+          {!lights && <button className = 'angler-fish' onClick={() => setLights(state => !state)}></button>}
+          {lights &&
+            <div> 
+              <button className = 'angler-fish-dark' onClick={() => setLights(state => !state)}></button>
+              <div className='lights-out-text'><h1>Thanks for visiting my website!</h1></div>
+            </div>
+          }
+        </div>
       </section>
     </div>
   )
