@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import enthuse from '../images/enthuse-min.png';
+import uc from '../images/university-chat-min.png'
+import dc from '../images/digital-collection-min.PNG'
 import menu from '../images/menu.svg';
+import close from '../images/close.svg';
+import { useTransition, animated } from 'react-spring'
 
 const pages = [
     <div>
@@ -25,48 +29,72 @@ const pages = [
         </p>
     </div>,
     <div>
+        <div className='img-container'>
+            <img src={uc} className='enthuse-img' alt = 'chat project'/>
+        </div>
+        <p>
+            University Chat was my first venture into mobile 
+                development as I worked with a group to make a
+                chat application for college students. Our idea
+                for University Chat was to have students verify their
+                id then be automatically added to a chat for each of 
+                their courses. Some features we implemented were: direct messages,
+                account management, pinned announcements, and file upload.<br />
+            <br />
+            <a href='https://github.com/jensenrrr/University-Chat' target='_blank' rel = 'noopener noreferrer'>GitHub</a><br />
+
+            Role: frontend and UI design<br />
+
+            Technologies: React Native, Gifted Chat
+        </p>
+    </div>,
+    <div>
         <p>
             This website. A static website to display information about me
 			and projects that may be relevant to employers. I used Figma to layout
 			the structure. All the pixel art is created by me in Aseprite.<br />
             <br />
-            <a href='' target='_blank' rel = 'noopener noreferrer'>GitHub</a><br />
+            <a href='https://github.com/mcbrideke/portfolio' target='_blank' rel = 'noopener noreferrer'>GitHub</a><br />
 
 
 			Technologies: React
         </p>
     </div>,
     <div>
+         <div className='img-container'>
+            <img src={dc} className='enthuse-img' alt = 'chat project'/>
+        </div>
        <p>
-            This was the first project I built after completing the React Bootcamp.
-			I really wanted to implement as many of the principles I learned as 
-			possible. Principles of React used in this project are: hooks, context, props, 
+            This was the first project I built after completing the React Bootcamp on <a href='https://scrimba.com/course/greact' target='_blank' rel = 'noopener noreferrer'>Scrimba</a>.<br />
+            Its a simple site that accesses allows a user to add movies from a movie database
+            in a collection. I focused heavily on implementing as many concepts of React I had just learned,
+            and kept the functionality and design of the site minimal. Principles of React used in this 
+            project are: hooks, context, props, 
 			functional components, routing, states, inline styling, useEffect api calls.<br />
             <br />
             <a href='' target='_blank' rel = 'noopener noreferrer'>GitHub</a><br />
-
-			Live Demo<br />
+            
+			<a href='https://awesome-mccarthy-f778c9.netlify.app' target='_blank' rel = 'noopener noreferrer'>Live Demo</a><br />
 
 			Technologies: React
         </p>
     </div>,
     <div>
-    <p>
-        My first web development project, this was created as a team for a school project.
-        We made a baseball card shop for a real life client who had a large collection of
-        baseball cards. We worked closely with the client and used an agile framework to 
-        complete all of our major goals. Some features implemented: persistent shopping cart, 
-        email contact, administrator mangement options, a way for the client to scan and upload cards to 
-        the database, user login and authentication, pagination, etc.<br />
-         <br />
-         <a href='' target='_blank' rel = 'noopener noreferrer'>GitHub</a><br />
+        <p>
+            My first web development project, this was created as a team for a school project.
+            We made a baseball card shop for a real life client who had a large collection of
+            baseball cards. We worked closely with the client and used an agile framework to 
+            complete all of our major goals. Some features implemented: persistent shopping cart, 
+            email contact, administrator mangement options, a way for the client to scan and upload cards to 
+            the database, user login and authentication, pagination, etc.<br />
+            <br />
 
-         Role: Frontend Developer<br />
+            Role: Frontend Developer<br />
 
-         Technologies: MEAN Stack
+            Technologies: MEAN Stack
 			
-     </p>
- </div>,
+        </p>
+    </div>,
  <div>
  <p>
       
@@ -87,7 +115,13 @@ function Projects({ refProp }) {
     };
     function showParagraph(i) {
         set(i);
+        toggleMenu(false);
     };
+    const transitions = useTransition(index, null, {
+        from: { opacity: 0},
+        enter: { opacity: 1},
+        leave: { opacity: 0, display:'none'},
+    })
 
     return (
         <section id='projects'>
@@ -101,6 +135,9 @@ function Projects({ refProp }) {
                     {!menuOpen && <img src={menu} onClick={() => toggleMenu(true)} className='mobile-menu' alt = 'menu icon'/>}
                         {menuOpen &&
                          <ul >
+                             <li>
+                                <img src={close} onClick={() => toggleMenu(false)} className='mobile-close' alt='close menu'/>
+                             </li>
                          <li style={index === 0 ? activeStyle : inactiveStyle}>
                              <a
                                  href='#0'
@@ -151,16 +188,6 @@ function Projects({ refProp }) {
                                  Baseball Card Shop
                              </a>
                          </li>
-                         <li style={index === 5 ? activeStyle : inactiveStyle}>
-                             <a
-                                 href='#0'
-                                 style={index === 5 ? activeStyle : inactiveStyle}
-                                 onClick={() => showParagraph(5)}
-                                 className='about-nav'
-                             >
-                                 Pirate Game
-                             </a>
-                         </li>
                      </ul>}
                     </div>
                     <div className='non-mobile'>
@@ -172,7 +199,7 @@ function Projects({ refProp }) {
                                     onClick={() => showParagraph(0)}
                                     className='about-nav'
                                 >
-                                    Enthuse <span className = "tag">React</span> <span  className = "tag">Full Stack</span> <span  className = "tag">Frontend</span>
+                                    Enthuse <span className = "tag">React</span> <span  className = "tag">Full Stack</span>
                                 </a>
                             </li>
                             <li className='icon2' style={index === 1 ? activeStyle : inactiveStyle}>
@@ -182,7 +209,7 @@ function Projects({ refProp }) {
                                     onClick={() => showParagraph(1)}
                                     className='about-nav'
                                 >
-                                    University Chat <span  className = "tag">React</span>
+                                    University Chat <span className = "tag">React Native</span>
                                 </a>
                             </li>
                             <li className='icon2' style={index === 2 ? activeStyle : inactiveStyle}>
@@ -215,21 +242,18 @@ function Projects({ refProp }) {
                                     Baseball Card Shop <span className = "tag">MEAN</span>
                                 </a>
                             </li>
-                            <li className='icon2' style={index === 5 ? activeStyle : inactiveStyle}>
-                                <a
-                                    href='#0'
-                                    style={index === 5 ? activeStyle : inactiveStyle}
-                                    onClick={() => showParagraph(5)}
-                                    className='about-nav'
-                                >
-                                    Pirate Game
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
                 <div className='content' style={{ color: '#F49364', backgroundColor: '#FCDCBF ' }}>
-                    {pages[index]}
+                {transitions.map(({ item, key, props  }) => 
+                        <animated.div
+                            key={key}
+                            style={{ ...props }}
+                        >
+                            {pages[item]}
+                        </animated.div>
+                    )}
                 </div>
             </div>
         </section>

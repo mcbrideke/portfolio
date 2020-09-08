@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import menu from '../images/menu.svg'
+import close from '../images/close.svg';
+import { useTransition, animated } from 'react-spring'
 
 const pages = [
-    <p>
+    
+    <p className='paragraph-one'>
         I went into college looking for a major that would give me
         the opportunity to design and build. My first choice, computer engineering
         seemed like a perfect fit. With circuits and solder I could build things,
@@ -18,8 +21,8 @@ const pages = [
             an ability to package information I think is important,
             into an application that everyone can use,
             and take it and spread it to the whole world in an instant.
-        </p>,
-    <p>
+    </p>,
+   <p className='paragraph-two'>
         Currently I am looking for a job where I can apply my skills and
         find a good balance of creativity and effeciency. Right now I have career-ready proficiency
         with popular frameworks like React, but I am well aware of the vast world of web development frameworks, and would love
@@ -28,8 +31,8 @@ const pages = [
         <br />
             Outside of my professional life I like to fish and dive; play basketball, video games, and board games with my friends;
             and work on those fun, little side projects that first enticed me towards programming.
-        </p>,
-    <p>
+    </p>,
+    <p className='paragraph-three'>
         <a 
             href='https://drive.google.com/file/d/1fcbYv1gSH-veQcI00zRkaMzRo9eyObXH/view?usp=sharing' 
             target = '_blank' 
@@ -51,7 +54,7 @@ const pages = [
         <br />
             Git, Trello, Illustrator, <br />
         <br />Affinity Designer, Unity, Aesprite, Figma
-        </p>
+    </p>
 ]
 
 function Home({ refProp }) {
@@ -59,8 +62,14 @@ function Home({ refProp }) {
     const activeStyle = { opacity: 1 };
     const inactiveStyle = { opacity: 0.6 };
     const [menuOpen, toggleMenu] = useState(false);
+    const transitions = useTransition(index, null, {
+        from: { opacity: 0},
+        enter: { opacity: 1},
+        leave: { opacity: 0, display:'none'},
+    })
     function showParagraph(i) {
         set(i);
+        toggleMenu(false);
     }
 
     return (
@@ -74,6 +83,9 @@ function Home({ refProp }) {
                         {!menuOpen && <img src={menu} onClick={() => toggleMenu(true)} className='mobile-menu' alt = 'menu icon'/>}
                         {menuOpen &&
                         <ul>
+                             <li>
+                                <img src={close} onClick={() => toggleMenu(false)} className='mobile-close' alt='close menu'/>
+                             </li>
                             <li style={index === 0 ? activeStyle : inactiveStyle}>
                                 <a
                                     href='#0'
@@ -142,8 +154,15 @@ function Home({ refProp }) {
                         </ul>
                     </div>
                 </div>
-                <div className='content'>
-                    {pages[index]}
+                <div className="content" >
+                    {transitions.map(({ item, key, props  }) => 
+                        <animated.div
+                            key={key}
+                            style={{ ...props }}
+                        >
+                            {pages[item]}
+                        </animated.div>
+                    )}
                 </div>
             </div>
         </section>

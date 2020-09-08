@@ -70,7 +70,7 @@ function App() {
   const executeScroll = (myRef) => scrollToRef(myRef);
   const playState = isScrolling ? 'running' : 'paused';
   const transform = scrollDirection === 'down' ? 'rotate(180deg) scaleY(-1)' : 'rotate(0deg)';
-  const showNav = scrollPosition > 600 ? 'block' :'none';
+  const showNav = scrollPosition > 600 ? '' :'none';
   const bubblesAnimation = isActive ? '' : 'none';
   // console.log(bubblesAnimation)
   // console.log(isActive)
@@ -78,30 +78,29 @@ function App() {
     <div>
       {isActive && <div className='bubbles' style = {{position:'absolute', animation:{bubblesAnimation}, top:coords.y-150 + 'px', left:coords.x-96 + 'px'}}></div>}
       <div className='menu' style={{display:showNav}}>
-        <div>
-      <nav>
-            <a href='#0' onClick={() => executeScroll(homeRef)}>Home</a>
-            <a href='#0' onClick={() => executeScroll(projectsRef)}>Projects</a>
-            <a href='#0' onClick={() => executeScroll(contactRef)}>Contact</a>
-      </nav>
+        <nav>
+          <a href='#0' onClick={() => executeScroll(homeRef)}>Home</a>
+          <a href='#0' onClick={() => executeScroll(projectsRef)}>Projects</a>
+          <a href='#0' onClick={() => executeScroll(contactRef)}>Contact</a>
+        </nav>
         <div className='diver' style={{animationPlayState:playState, transform:transform}}></div>
-      </div></div>
-        <section id='header'>
-          <div className='header-grid-container'>
-            <div className='sun'></div>
-            <div className='header-title'>
-              <h1>Hello,</h1>
-              <h1>My name is Kevin,</h1>
-              <h1>I'm a web developer.</h1>
-            </div>
+      </div>
+      <section id='header'>
+        <div className='header-grid-container'>
+          <div className='sun'></div>
+          <div className='header-title'>
+            <h1>Hello,</h1>
+            <h1>My name is Kevin,</h1>
+            <h1>I'm a web developer.</h1>
           </div>
-        </section>
-          <Home refProp={homeRef} />
-          <Projects refProp={projectsRef} />
-          <Contact refProp={contactRef} />
-          <section id='footer'>
-                <p style={{color:'green'}}> Thanks for visiting my website!</p>
-          </section>
+        </div>
+      </section>
+      <Home refProp={homeRef} />
+      <Projects refProp={projectsRef} />
+      <Contact refProp={contactRef} />
+      <section id='footer'>
+            <p style={{color:'green'}}> Thanks for visiting my website!</p>
+      </section>
     </div>
   )
   
