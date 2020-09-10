@@ -43,7 +43,7 @@
 .contact-grid-container {
   display:grid;
   margin-right: 25%;
-  margin-left: 10%;
+  margin-left: 25%;
   margin-top:5%;
   margin-bottom: 5%;
 }
@@ -57,14 +57,34 @@
   align-items: center;
   justify-content: center;
 }
+.contact-title { 
+  grid-area: contact-title; 
+  background-color: #32A29C;
+  color: #C4F4D5;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left:40px;
+  padding-right: 40px;
+}
 .content { 
   height:100%;
   width: 100%;
   grid-area: content;
   padding-left: 30px;
   padding-right: 25px;
-  color: #32A29C;
+  box-shadow: 10px 15px;
   background-color: #C4F4D5;
+  color:#32A29C ;
+}
+.contact-content { 
+  height:100%;
+  width: 100%;
+  grid-area: contact-content;
+  padding-left: 30px;
+  padding-right: 25px;
   box-shadow: 10px 15px;
 }
 /* .content p {
@@ -97,6 +117,10 @@
    border-radius: 10px 10px 0 0; 
    font-size: 1.5vw;
   }
+  .contact-title { 
+    border-radius: 10px 10px 0 0; 
+    font-size: 1.5vw;
+   }
   .grid-container {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.5fr 1.5fr 1fr;
@@ -107,14 +131,19 @@
     grid-template-rows: 0.4fr 1.6fr;
     gap: 0px 0px;
     grid-template-areas:
-      "title"
-      "content";
+      "contact-title"
+      "contact-content";
   }
   .about-items {
     padding-top: 15px;
     overflow-y:scroll;
   }
   .content {
+    
+    
+    overflow-y: scroll;
+  }
+  .contact-content {
     
     
     overflow-y: scroll;
@@ -152,7 +181,7 @@
     grid-template-rows: 1fr;
     gap: 0px 0px;
     grid-template-areas:
-      "title content";
+      "contact-title contact-content";
   }
   .non-mobile {
     display:none;
@@ -167,7 +196,20 @@
     transform: rotate(270deg);
     font-size:40px;
   }
+  .contact-title {
+    
+  }
+  .contact-title h1{
+    transform: rotate(270deg);
+    font-size:40px;
+  }
   .content {
+    
+    min-height:700px;
+    max-height: 800px;
+    overflow-y: scroll;
+  }
+  .contact-content {
     
     min-height:700px;
     max-height: 800px;
@@ -184,7 +226,6 @@
 }
 @media (min-width: 1845px) {
   .contact-grid-container {
-    min-width: 1500px;
     min-height:800px;
   }
   .grid-container {
@@ -196,7 +237,6 @@
 }
 @media (min-width:1680px) and (max-width: 1845px) {
   .contact-grid-container {
-    min-width: 1500px;
     min-height:800px;
   }
   .content { 
@@ -206,7 +246,7 @@
 }
 @media (min-width:1450px) and (max-width: 1680px) {
   .contact-grid-container {
-    min-width: 1183px;
+   
     min-height:800px;
   }
   .content { 
@@ -217,7 +257,7 @@
 }
 @media (min-width: 1400px)  and (max-width:1450px){
   .contact-grid-container {
-    min-width: 1071px;
+    
     min-height:500px;
   }
   .content {
@@ -447,14 +487,14 @@ li.icon2 {
 }
 .footer-content {
   width: 100%;
-  height:130px;
+  height:200px;
   align-content: center;
 }
 
 .lights-out-text {
   display: inline-block;
   color:#83BF5F;
-  font-size: large;
+  font-size: medium;
 }
 .angler-fish-dark {
   background-image:url('./images/anglerfish-light.png');
